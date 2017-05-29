@@ -17,7 +17,7 @@ class CreatePointsTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->string('description', 5000)->nullable();
-            $table->text('links')->default('[]')->comment('Stored as JSON');
+            $table->string('links', 5000)->default('[]')->comment('Stored as JSON');
             $table->integer('category_id')->unsigned();
             $table->integer('added_by_id');
             $table->decimal('longitude', 17, 14);
