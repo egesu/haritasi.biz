@@ -19,7 +19,7 @@ class CreatePointsTable extends Migration
             $table->string('description', 5000)->nullable();
             $table->string('links', 5000)->default('[]')->comment('Stored as JSON');
             $table->integer('category_id')->unsigned();
-            $table->integer('added_by_id');
+            $table->integer('added_by_id')->unsigned();
             $table->decimal('longitude', 17, 14);
             $table->decimal('latitude', 16, 14);
 
