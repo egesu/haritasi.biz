@@ -9,8 +9,12 @@ class AuthController extends ApiController
 {
     public function index(Request $request)
     {
-        // $user = $request->user();
-        return response()->json(Auth::user());
+        $user = Auth::user();
+        if(!$user) {
+            return response('', 401);
+        } else {
+            return response()->json($user);
+        }
     }
 
     public function store(Request $request)
