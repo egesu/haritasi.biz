@@ -19,7 +19,6 @@ class Point extends Model
         'added_by_id',
         'latitude',
         'longitude',
-        'icon',
     ];
 
     protected $casts = [
@@ -37,7 +36,6 @@ class Point extends Model
             'category_id',
             'latitude',
             'longitude',
-            'icon',
         ]);
     }
 
