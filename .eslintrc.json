@@ -1,0 +1,20 @@
+{
+    "extends": "angular",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "ecmaFeatures": {
+        "modules": true,
+        "spread" : true,
+        "restParams" : true
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+    },
+    "env": {
+        "browser": true,
+        "es6" : true
+    }
+}

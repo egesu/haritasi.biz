@@ -1,0 +1,101 @@
+<h3 ng-hide="point.pointId">You are adding a new point</h3>
+<h3 ng-show="point.pointId">You are editing point #{{ point.pointId }}</h3>
+
+<span us-spinner spinner-key="point"></span>
+
+<form ng-submit="point.save()" name="pointForm">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            ng-model="point.dirtyData.title"
+            required
+            maxlength="100"
+        >
+    </div>
+
+    <leaflet
+        height="300px"
+        width="100%"
+        event-broadcast="point.mapEvents"
+        markers="point.markers"
+    ></leaflet>
+
+    <div class="form-group">
+        <label for="coordinates">Coordinates</label>
+        <input
+            class="form-control"
+            id="coordinates"
+            name="coordinates"
+            ng-attr-value="{{ point.dirtyData.latitude }}, {{ point.dirtyData.longitude }}"
+            required
+            disabled
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            ng-model="point.dirtyData.description"
+            required
+            maxlength="5000"
+        ></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="category_id">Category</label>
+        <select
+            class="form-control"
+            id="category_id"
+            name="category_id"
+            ng-model="point.dirtyData.category_id"
+            required
+        >
+            <option value=""></option>
+            <option
+                ng-repeat="category in point.categoryList()"
+                ng-attr-value="{{ category.id }}"
+                ng-bind="category.name"
+            ></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="url0">
+            Related links
+            <a href="" ng-click="point.dirtyData.links.push(null)">Add</a>
+        </label>
+
+        <div class="row" ng-repeat="item in point.dirtyData.links track by $index">
+            <div class="col-xs-10">
+                <input
+                    type="url"
+                    class="form-control"
+                    ng-attr-id="url{{$index}}"
+                    ng-attr-name="url{{$index}}"
+                    ng-model="point.dirtyData.links[$index]"
+                    placeholder="Enter a URL starting with http:// or https://"
+                >
+            </div>
+            <div class="col-xs-2 text-right">
+                <button
+                    type="button"
+                    class="btn btn-default"
+                    ng-if="$index !== 0"
+                    ng-click="point.dirtyData.links.splice($index, 1)"
+                >Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <button type="button" class="btn btn-default" ng-click="category.dismissModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>

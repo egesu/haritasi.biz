@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="login">
+        <form ng-submit="login.login()" name="loginForm">
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    ng-model="login.data.email"
+                    required
+                    maxlength="100"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    ng-model="login.data.password"
+                    required
+                    maxlength="100"
+                >
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

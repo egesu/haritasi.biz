@@ -1,0 +1,30 @@
+<div class="topbar">
+    <h3>haritasi.biz</h3>
+</div>
+
+<div class="sidebar">
+    <div>
+        <div ui-sref-active="active">
+            <a ui-sref="admin.home">Dashboard</a>
+        </div>
+        <div ui-sref-active="active">
+            <a ui-sref="admin.categories">Categories</a>
+        </div>
+        <div ui-sref-active="active">
+            <a ui-sref="admin.pointList">Points</a>
+        </div>
+        <div>
+            <a ng-click="app.logout()">Logout</a> ({{ app.currentUser().name }})
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid content-container">
+    <div class="row">
+        <div class="col-xs-9 col-xs-offset-3">
+            <div class="content">
+                <ui-view name="content"></ui-view>
+            </div>
+        </div>
+    </div>
+</div>

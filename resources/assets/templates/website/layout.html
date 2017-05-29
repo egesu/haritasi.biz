@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-default button-menu-toggle" aria-label="Toggle menu">
+    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+</button>
+
+<div class="home-content">
+    <leaflet
+        ng-if="home.showMap"
+        id="map"
+        markers="home.pointList"
+        layers="home.layers"
+        defaults="home.mapConfig"
+        event-broadcast="home.mapEvents"
+        lf-center="home.mapCenter"
+        height="100%"
+        width="100%"
+    ></leaflet>
+</div>

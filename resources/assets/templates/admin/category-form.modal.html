@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <h3 class="modal-title">Category</h3>
+</div>
+<div class="modal-body">
+    <form ng-submit="category.save()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Name"
+                ng-model="category.dirtyData.name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+                class="form-control"
+                id="description"
+                placeholder="You can write long"
+                ng-model="category.dirtyData.description"
+                required
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="color_code">Color</label>
+            <input
+                type="color"
+                class="form-control"
+                id="color_code"
+                ng-model="category.dirtyData.color_code"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="icon">Icon</label>
+            <select
+                class="form-control"
+                id="icon"
+                ng-model="category.dirtyData.icon"
+                required
+            >
+                <option value=""></option>
+                <option value="cutlery">cutlery</option>
+                <option value="home">home</option>
+                <option value="tint">tint</option>
+                <option value="inbox">inbox</option>
+                <option value="leaf">leaf</option>
+                <option value="star">star</option>
+            </select>
+        </div>
+
+        <div class="text-right">
+            <button type="button" class="btn btn-default" ng-click="category.dismissModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
