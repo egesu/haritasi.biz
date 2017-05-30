@@ -1,5 +1,4 @@
-window._ = require('lodash');
-window.angular = require('angular');
+import angular from 'angular';
 
 require('ui.leaflet.webpack');
 import uirouter from 'angular-ui-router';
