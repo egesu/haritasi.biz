@@ -23,3 +23,41 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.leaflet-control-layers {
+    display: none;
+}
+
+.category-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0,0,0,0.6);
+    padding: 1vw;
+}
+
+.category-item {
+    button, button:focus {
+        background: #333;
+        border-color: #444;
+        margin-bottom: 0.1vw;
+        width: 100%;
+        text-align: left;
+    }
+
+    button:hover, button:active {
+        background: #545454;
+        border-color: #555;
+        box-shadow: unset;
+    }
+
+    button.active {
+        background: #444;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.35);
+    }
+
+    button.active:hover {
+        background: #656565;
+    }
+}

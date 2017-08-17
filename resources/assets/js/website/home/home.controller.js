@@ -5,6 +5,7 @@ export default class HomeController {
         this.pointResource = Point;
         this.leafletData = leafletData;
         this.categoryStorage = CategoryStorage;
+        this.selectedCategories = [];
 
         this.pointList = [];
         this.categoryMarkerTypes = {};
@@ -39,6 +40,8 @@ export default class HomeController {
             map: {
                 enable: [
                     'dragend',
+                    'overlayadd',
+                    'overlayremove',
                 ],
                 logic: 'emit',
             },
@@ -49,9 +52,19 @@ export default class HomeController {
 
     init() {
         this.$scope.$on('leafletDirectiveMap.map.dragend', (e, l) => this.handleReloadPoints(e, l.leafletObject));
+        // this.$scope.$on('leafletDirectiveMap.map.overlayadd', (e, l, a, b) => this.testing(e, l.leafletObject, a, b));
+        // this.$scope.$on('leafletDirectiveMap.map.overlayremove', (e, l, a, b) => this.testing(e, l.leafletObject, a, b));
         // this.$scope.$on('leafletDirectiveMap.map.resize', (e, l) => this.handleReloadPoints(e, l.leafletObject));
 
+        this.spinner.spin('load-categories');
+
         this.categoryStorage.status.then((categoryList) => {
+            this.categoryList = categoryList;
+            for (let i = 0; i <= 3; i++) {
+                this.categoryList[i].selected = true;
+                this.selectedCategories.push(this.categoryList[i].id);
+            }
+
             categoryList.forEach((category) => {
                 this.layers.overlays['category-' + category.id] = {
                     name: category.name,
@@ -72,6 +85,26 @@ export default class HomeController {
             });
 
             this.showMap = true;
+
+            this.spinner.stop('load-categories');
+        });
+    }
+
+    toggleCategory(category) {
+        category.selected = !category.selected;
+        let length = this.categoryList.length;
+        let selectedCategories = [];
+
+        for (let i = 0; i < length; i++) {
+            if (this.categoryList[i].selected) {
+                selectedCategories.push(this.categoryList[i].id);
+            }
+        }
+
+        this.selectedCategories = selectedCategories;
+
+        this.leafletData.getMap('map').then((map) => {
+            this.handleReloadPoints(null, map);
         });
     }
 
@@ -82,10 +115,12 @@ export default class HomeController {
             latitudeMax: bounds._northEast.lat,
             longitudeMin: bounds._southWest.lng,
             longitudeMax: bounds._northEast.lng,
+            'categoryIds[]': this.selectedCategories,
         });
     }
 
     loadPoints(bounds) {
+        this.spinner.spin('load-points');
         bounds.listType = 'bounded';
         this.pointResource.query(bounds).$promise
             .then((results) => {
@@ -101,6 +136,9 @@ export default class HomeController {
                     });
                 });
                 this.pointList = newPointList;
+            })
+            .finally(() => {
+                this.spinner.stop('load-points');
             });
     }
 }

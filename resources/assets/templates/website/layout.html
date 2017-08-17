@@ -1,6 +1,27 @@
-<button type="button" class="btn btn-default button-menu-toggle" aria-label="Toggle menu">
+<!-- <button type="button" class="btn btn-default button-menu-toggle" aria-label="Toggle menu">
     <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-</button>
+</button> -->
+
+<span us-spinner spinner-key="load-categories" spinner-start-active="true"></span>
+<span us-spinner spinner-key="load-points" spinner-start-active="true"></span>
+
+<div class="category-list">
+    <div class="category-item" ng-repeat="category in home.categoryList">
+        <button
+            type="button"
+            class="btn"
+            aria-label=""
+            ng-style="{
+                color: category.color_code
+            }"
+            ng-class="{ active: category.selected }"
+            ng-click="home.toggleCategory(category)"
+        >
+            <span class="glyphicon glyphicon-{{ category.icon }}" aria-hidden="true"></span>
+            <span ng-bind="category.name"></span>
+        </button>
+    </div>
+</div>
 
 <div class="home-content">
     <leaflet

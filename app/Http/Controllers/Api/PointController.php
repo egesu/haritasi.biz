@@ -27,9 +27,14 @@ class PointController extends ApiController
 
         if(array_key_exists('listType', $input)) {
             if($input['listType'] === 'bounded') {
+                $categories = null;
+                if(array_key_exists('categoryIds', $input)) {
+                    $categories = $input['categoryIds'];
+                }
                 $points = $this->pointService->getListByBounds(
                     $input['latitudeMin'], $input['latitudeMax'],
-                    $input['longitudeMin'], $input['longitudeMax']
+                    $input['longitudeMin'], $input['longitudeMax'],
+                    $categories
                 );
             }
         } else {

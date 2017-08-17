@@ -19,13 +19,17 @@ class PointService
             ->limit(25)->offset($page * 25)->get();
     }
 
-    public function getListByBounds($latMin, $latMax, $lngMin, $lngMax)
+    public function getListByBounds($latMin, $latMax, $lngMin, $lngMax, array $categories = [])
     {
         $query = Point::fieldsForMap()
             ->where('latitude', '>', $latMin - 2)
             ->where('latitude', '<', $latMax + 2)
             ->where('longitude', '>', $lngMin - 2)
             ->where('longitude', '<', $lngMax + 2);
+
+        if(count($categories) > 0) {
+            $query->whereIn('category_id', $categories);
+        }
 
         return $query->get();
     }
