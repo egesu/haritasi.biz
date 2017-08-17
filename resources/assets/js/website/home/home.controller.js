@@ -61,8 +61,10 @@ export default class HomeController {
         this.categoryStorage.status.then((categoryList) => {
             this.categoryList = categoryList;
             for (let i = 0; i <= 3; i++) {
-                this.categoryList[i].selected = true;
-                this.selectedCategories.push(this.categoryList[i].id);
+                if (this.categoryList[i]) {
+                    this.categoryList[i].selected = true;
+                    this.selectedCategories.push(this.categoryList[i].id);
+                }
             }
 
             categoryList.forEach((category) => {
