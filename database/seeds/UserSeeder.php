@@ -11,7 +11,6 @@ class UserSeeder extends Seeder
             $user->name = 'Admin';
             $user->email = 'admin@admin.com';
             $user->password = \Hash::make('123456');
-            // $user->user_type_id = 'admin'; //TODO: buna gerek yok aslında? role üzerinden bakabiliriz.
             $user->save();
         }
     }
