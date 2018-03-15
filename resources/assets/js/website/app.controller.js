@@ -1,9 +1,9 @@
 AppController.$inject = [];
 
 export default function AppController() {
-    var vm = this;
+  var vm = this;
 
-    vm.init = function() {};
+  vm.init = function() {};
 
-    vm.init();
+  vm.init();
 }

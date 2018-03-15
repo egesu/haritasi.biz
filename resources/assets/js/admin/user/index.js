@@ -6,9 +6,9 @@ import AuthService from './auth.service';
 import UserService from './user.service.js';
 
 export default angular.module('haritasi.admin.user', [
-        core,
-    ])
-    .controller('LoginController', LoginController)
-    .service('Auth', AuthService)
-    .factory('User', UserService)
-    .name;
+    core,
+  ])
+  .controller('LoginController', LoginController)
+  .service('Auth', AuthService)
+  .factory('User', UserService)
+  .name;

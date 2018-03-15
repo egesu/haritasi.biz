@@ -16,19 +16,19 @@ import AppController from './app.controller';
 import AppRoutes from './web.routes';
 
 angular.module('haritasi.web', [
-        require('angular-sanitize'),
-        require('angular-animate'),
-        require('angular-resource'),
-        uirouter,
-        require('angular-ui-bootstrap'),
-        'ui-leaflet',
-        'angularSpinner', // loading indicator
+    require('angular-sanitize'),
+    require('angular-animate'),
+    require('angular-resource'),
+    uirouter,
+    require('angular-ui-bootstrap'),
+    'ui-leaflet',
+    'angularSpinner', // loading indicator
 
-        core,
-        home,
-        category,
-        point,
-        // user,
-    ])
-    .config(AppRoutes)
-    .controller('AppController', AppController);
+    core,
+    home,
+    category,
+    point,
+    // user,
+  ])
+  .config(AppRoutes)
+  .controller('AppController', AppController);

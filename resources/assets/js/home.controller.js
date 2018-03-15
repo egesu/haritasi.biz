@@ -1,29 +1,29 @@
 HomeController.$inject = [
-    '$http',
+  '$http',
 ];
 
 export default function HomeController($http) {
-    var vm = this;
+  var vm = this;
 
-    vm.markers = [];
+  vm.markers = [];
 
-    vm.init = function() {
-        vm.loadPoints();
-    };
+  vm.init = function() {
+    vm.loadPoints();
+  };
 
-    vm.loadPoints = function() {
-        $http({
-            method: 'get',
-            url: '/api/points',
-        }).then(
-            function success(response) {
-                console.log(response);
-            },
-            function error(response) {
-                console.log(response);
-            },
-        );
-    };
+  vm.loadPoints = function() {
+    $http({
+      method: 'get',
+      url: '/api/points',
+    }).then(
+      function success(response) {
+        console.log(response);
+      },
+      function error(response) {
+        console.log(response);
+      },
+    );
+  };
 
-    vm.init();
+  vm.init();
 }

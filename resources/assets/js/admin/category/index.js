@@ -8,10 +8,10 @@ import Category from './category.service';
 import CategoryStorage from './category-storage.service';
 
 export default angular.module('haritasi.admin.category', [
-        core,
-    ])
-    .controller('CategoryListController', CategoryListController)
-    .controller('CategoryModalController', CategoryModalController)
-    .factory('Category', Category)
-    .service('CategoryStorage', CategoryStorage)
-    .name;
+    core,
+  ])
+  .controller('CategoryListController', CategoryListController)
+  .controller('CategoryModalController', CategoryModalController)
+  .factory('Category', Category)
+  .service('CategoryStorage', CategoryStorage)
+  .name;

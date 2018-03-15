@@ -1,34 +1,34 @@
 Category.$inject = [
-    'Resource',
+  'Resource',
 ];
 
 export default function Category(Resource) {
-    var self = this;
+  var self = this;
 
-    self.url = 'category/:id';
+  self.url = 'category/:id';
 
-    self.resourceService = Resource(
-        self.url, {
-            id: '@id',
-        }, {
-            query: {
-                method: 'GET',
-                isArray: true
-            },
-            get: {
-                method: 'GET',
-            },
-            insert: {
-                method: 'POST',
-            },
-            update: {
-                method: 'PUT',
-            },
-            remove: {
-                method: 'DELETE',
-            },
-        }
-    );
+  self.resourceService = Resource(
+    self.url, {
+      id: '@id',
+    }, {
+      query: {
+        method: 'GET',
+        isArray: true
+      },
+      get: {
+        method: 'GET',
+      },
+      insert: {
+        method: 'POST',
+      },
+      update: {
+        method: 'PUT',
+      },
+      remove: {
+        method: 'DELETE',
+      },
+    }
+  );
 
-    return self.resourceService;
+  return self.resourceService;
 }
