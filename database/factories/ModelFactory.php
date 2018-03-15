@@ -50,9 +50,9 @@ $factory->define(App\Model\Point::class, function(Faker\Generator $faker) {
             return App\Model\Category::inRandomOrder()->first()->id;
         },
         'added_by_id' => 1,
-        'latitude' => $faker->randomFloat(8, 36, 42),
-        'longitude' => $faker->randomFloat(8, 26, 45),
-        // 'latitude' => $faker->randomFloat(8, -85, 85),
-        // 'longitude' => $faker->randomFloat(8, -180, 180),
+        // 'latitude' => $faker->randomFloat(8, 36, 42),
+        // 'longitude' => $faker->randomFloat(8, 26, 45),
+        'latitude' => $faker->randomFloat(8, -85, 85),
+        'longitude' => $faker->randomFloat(8, -180, 180),
     ];
 });
