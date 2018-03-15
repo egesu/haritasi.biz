@@ -42,6 +42,7 @@ export default class HomeController {
           'dragend',
           'overlayadd',
           'overlayremove',
+          'zoomend',
         ],
         logic: 'emit',
       },
@@ -54,7 +55,6 @@ export default class HomeController {
     this.$scope.$on('leafletDirectiveMap.map.dragend', (e, l) => this.handleReloadPoints(e, l.leafletObject));
     // this.$scope.$on('leafletDirectiveMap.map.overlayadd', (e, l, a, b) => this.testing(e, l.leafletObject, a, b));
     // this.$scope.$on('leafletDirectiveMap.map.overlayremove', (e, l, a, b) => this.testing(e, l.leafletObject, a, b));
-    this.$scope.$on('leafletDirectiveMap.map.resize', (e, l) => this.handleReloadPoints(e, l.leafletObject));
     this.$scope.$on('leafletDirectiveMap.map.zoomend', (e, l) => this.handleReloadPoints(e, l.leafletObject));
 
     this.spinner.spin('load-categories');
