@@ -27,6 +27,6 @@
     "eslint-plugin-angular": "^2.4.0",
     "laravel-mix": "0.*",
     "ui-leaflet": "^1.0.3",
-    "ui.leaflet.webpack": "git+https://git@github.com/egesu/ui.leaflet.webpack.git"
+    "ui.leaflet.webpack": "1.0.5"
   }
 }
